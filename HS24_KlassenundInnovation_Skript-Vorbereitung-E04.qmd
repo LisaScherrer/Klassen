@@ -1,0 +1,158 @@
+---
+title: "Forschungsseminar Klassen und Innovation: Vorbereitung E04"
+format: html
+editor: source
+editor_options: 
+  chunk_output_type: console
+---
+
+# 1. Einführung
+
+Das sich in der Entwicklung befindende Paket "DIGCLASS" ermöglicht es, automatische verschiede Klassen-Zuordnungen in Datensätzen zu erstellen. Siehe hier: https://digclass.pages.code.europa.eu/digclass/index.html
+
+Um das Paket verwenden zu können, müssen Sie zuerst Git installieren. Eine Anleitung finden Sie hier: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+
+Weitere benötigen Sie folgende Pakete (bitte installieren, falls Sie diese nicht bereits installiert haben):
+
+-   devtools (um von Git ein sich in der Entwicklung befindendes Paket runterzuladen)
+-   vctrs (wird im Rahmen von DIGCLASs benötigt)
+-   dplyr (erweitertes Datenhandling allgemein, von Tidyverse)
+-   stringr (erweitertes Datenhandling von Characterdaten, von Tidyverse)
+
+Folgenden Codeteil können Sie nachher der Ausführung löschen. Dieser installiert das Paket "DIGCLASS" über GIT.
+
+```{r eval=FALSE}
+devtools::install_git("https://code.europa.eu/digclass/digclass.git")
+```
+
+# 2. Vorbereitung und Datenladen
+
+Laden der benötigten Pakete:
+
+```{r}
+library(DIGCLASS)
+library(vctrs)
+library(dplyr)
+library(stringr)
+```
+
+Laden des Datensatzes: Ändern Sie dazu den Pfad zu dem Ordner, in dem Sie das File des ESS abgelegt haben. Stellen Sie sicher, dass die "Slashes" in diese / Richtung sind und das am Ende des Pfades ein Slash vorhanden ist.
+
+```{r}
+pfad <- "C:/Users/SchweglG/R_Daten alle/R_Daten/11_HS24/Klassen und Innovation/E04/"
+ESS11 <- read.csv(file = paste0(pfad, "ESS11-subset.csv"), 
+                  na.strings = c("55", "66", "77", "88", "99",
+                    "555", "666", "777", "888",
+                    "5555", "66666", "77777", "88888", "99999"))
+#Achtung: Die Strategie zur Erkennung von fehlenden Werte wird dazu führen, dass bei Alter die entsprechenden Werte dann NA wären -- ggfs. überprüfen!
+```
+
+# 3. Erstellen der Klassenzuordnungen
+
+## 3.1 Vorbereitung der Korrektur ISCO08
+
+Die ISCO08 Klassifizierung muss im Character-Format vorliege und es gilt sicherzustellen, dass es 4-Stellen sind:
+
+```{r}
+ESS11$isco08 <- as.character(ESS11$isco08) #wird vom Paket verlang
+ESS11$isco08[str_count(ESS11$isco08)!=4 & !is.na(ESS11$isco08)]
+ESS11$isco08[ESS11$isco08=="110"] <- "0110"
+```
+
+## 3.2 Klassenzuordnung nach Wright
+
+Wie funktioniert die Funktion?
+
+```{r}
+?isco88com_to_wright
+```
+
+Vorbereitung der benötigten Variablen
+
+```{r}
+ESS11$isco88com <- isco08_to_isco88(ESS11$isco08) %>% isco88_to_isco88com()
+#is_supervisor
+ESS11$is_supervisor <- case_when(ESS11$emplno > 0 ~ 1,
+                                 ESS11$emplno == 0 ~ 0,
+                                 is.na(ESS11$emplno) ~ 0)
+#self_employed
+ESS11$self_employed <- if_else(ESS11$tporgwk == 5, 1, 0)
+#n_employees
+ESS11$emplno_nona <- case_when(is.na(ESS11$emplno) ~ 0, 
+                               ESS11$emplno == 0 ~ 0,
+                               ESS11$emplno > 0 ~ ESS11$emplno)
+#control_work
+#ESS11$iorgact
+#control_daily
+ESS11$control_daily <- case_when(ESS11$wkdcorga > 7 ~ 1,
+                                 ESS11$wkdcorga > 4 & ESS11$wkdcorga < 8 ~ 2,
+                                 ESS11$wkdcorga > 1 & ESS11$wkdcorga < 5 ~ 3,
+                                 ESS11$wkdcorga < 2 ~ 4)
+```
+
+Klassifizierung nach den verschiedenen Möglichkeiten
+
+```{r}
+ESS11$wright_si <- isco88com_to_wright(ESS11$isco88com,
+                                    is_supervisor = ESS11$is_supervisor,
+                                    self_employed = ESS11$self_employed,
+                                    n_employees = ESS11$emplno_nona,
+                                    control_work = ESS11$iorgact,
+                                    control_daily = ESS11$control_daily,
+                                    type = "simple",
+                                    label = TRUE,
+                                    to_factor = TRUE)
+ESS11$wright_dm <- isco88com_to_wright(ESS11$isco88com,
+                                           is_supervisor = ESS11$is_supervisor,
+                                           self_employed = ESS11$self_employed,
+                                           n_employees = ESS11$emplno_nona,
+                                           control_work = ESS11$iorgact,
+                                           control_daily = ESS11$control_daily,
+                                           type = "decision-making",
+                                           label = TRUE,
+                                           to_factor = TRUE)
+ESS11$wright_pc <- isco88com_to_wright(ESS11$isco88com,
+                                       is_supervisor = ESS11$is_supervisor,
+                                       self_employed = ESS11$self_employed,
+                                       n_employees = ESS11$emplno_nona,
+                                       control_work = ESS11$iorgact,
+                                       control_daily = ESS11$control_daily,
+                                       type = "power-class",
+                                       label = TRUE,
+                                       to_factor = TRUE)
+sapply(list(ESS11$wright_si, ESS11$wright_dm, ESS11$wright_pc), table, useNA = "always")
+```
+
+## 3.3 Klassenzuordnung nach Goldthorpe (ESEC)
+
+Wie funktioniert die Funktion?
+
+```{r}
+?isco08_to_esec_mp
+```
+
+Vorbereitung der benötigten Variablen
+
+```{r}
+ESS11$isco08_3d <- str_trunc(ESS11$isco08,3, "right", "")
+ESS11$isco08_3d_o <- if_else(is.na(ESS11$isco08), NA, 0)
+ESS11$isco08_3d <- str_c(ESS11$isco08_3d, ESS11$isco08_3d_o)
+ESS11$isco08_3d_o <- NULL
+```
+
+Zuordnung erstellen:
+
+```{r}
+ESS11$esec <- isco08_to_esec_mp(ESS11$isco08_3d,
+                             is_supervisor = ESS11$is_supervisor,
+                             self_employed = ESS11$self_employed,
+                             n_employees = ESS11$emplno_nona,
+                             label = TRUE,
+                             to_factor = TRUE)
+
+table(ESS11$esec, useNA = "always")
+```
+
+# 4. Eigene Überlegungen und Analysen
+
+Probieren Sie hier nun eigene Überlegungen anzustellen zu den beiden Klassifizierungen. (i) Was zeigen sich in den Klassifizerungen je einzeln? (ii) Was können Sie im Vergleich miteinander aussagen? (iii) Und wie könnten Sie diese Klassifizierungen in einer einfachen Analyse nutzen?
