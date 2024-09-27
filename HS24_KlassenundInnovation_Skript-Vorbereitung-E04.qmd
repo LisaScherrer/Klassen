@@ -22,6 +22,7 @@ Weitere benötigen Sie folgende Pakete (bitte installieren, falls Sie diese nich
 Folgenden Codeteil können Sie nachher der Ausführung löschen. Dieser installiert das Paket "DIGCLASS" über GIT.
 
 ```{r eval=FALSE}
+getwd()
 devtools::install_git("https://code.europa.eu/digclass/digclass.git")
 ```
 
@@ -39,7 +40,7 @@ library(stringr)
 Laden des Datensatzes: Ändern Sie dazu den Pfad zu dem Ordner, in dem Sie das File des ESS abgelegt haben. Stellen Sie sicher, dass die "Slashes" in diese / Richtung sind und das am Ende des Pfades ein Slash vorhanden ist.
 
 ```{r}
-pfad <- "C:/Users/SchweglG/R_Daten alle/R_Daten/11_HS24/Klassen und Innovation/E04/"
+pfad <- "C:/Users/Florentina/OneDrive/Dokumente/everything/UniLu/5. Semester/Klassen und Innovation/S4/Klassen/"
 ESS11 <- read.csv(file = paste0(pfad, "ESS11-subset.csv"), 
                   na.strings = c("55", "66", "77", "88", "99",
                     "555", "666", "777", "888",
@@ -56,7 +57,7 @@ Die ISCO08 Klassifizierung muss im Character-Format vorliege und es gilt sicherz
 ```{r}
 ESS11$isco08 <- as.character(ESS11$isco08) #wird vom Paket verlang
 ESS11$isco08[str_count(ESS11$isco08)!=4 & !is.na(ESS11$isco08)]
-ESS11$isco08[ESS11$isco08=="110"] <- "0110"
+ESS11$isco08[ESS11$isco08=="110"] <- "0110" #nur 110 entspricht nicht dem 4-stelligen Format
 ```
 
 ## 3.2 Klassenzuordnung nach Wright
