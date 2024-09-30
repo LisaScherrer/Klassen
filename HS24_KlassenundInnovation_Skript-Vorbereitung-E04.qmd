@@ -22,8 +22,8 @@ Weitere benötigen Sie folgende Pakete (bitte installieren, falls Sie diese nich
 Folgenden Codeteil können Sie nachher der Ausführung löschen. Dieser installiert das Paket "DIGCLASS" über GIT.
 
 ```{r eval=FALSE}
-getwd()
-devtools::install_git("https://code.europa.eu/digclass/digclass.git")
+#getwd()
+#devtools::install_git("https://code.europa.eu/digclass/digclass.git")
 ```
 
 # 2. Vorbereitung und Datenladen
@@ -55,7 +55,7 @@ ESS11 <- read.csv(file = paste0(pfad, "ESS11-subset.csv"),
 Die ISCO08 Klassifizierung muss im Character-Format vorliege und es gilt sicherzustellen, dass es 4-Stellen sind:
 
 ```{r}
-ESS11$isco08 <- as.character(ESS11$isco08) #wird vom Paket verlang
+ESS11$isco08 <- as.character(ESS11$isco08) #wird vom Paket verlangt
 ESS11$isco08[str_count(ESS11$isco08)!=4 & !is.na(ESS11$isco08)]
 ESS11$isco08[ESS11$isco08=="110"] <- "0110" #nur 110 entspricht nicht dem 4-stelligen Format
 ```
@@ -122,6 +122,7 @@ ESS11$wright_pc <- isco88com_to_wright(ESS11$isco88com,
                                        label = TRUE,
                                        to_factor = TRUE)
 sapply(list(ESS11$wright_si, ESS11$wright_dm, ESS11$wright_pc), table, useNA = "always")
+
 ```
 
 ## 3.3 Klassenzuordnung nach Goldthorpe (ESEC)
@@ -156,4 +157,28 @@ table(ESS11$esec, useNA = "always")
 
 # 4. Eigene Überlegungen und Analysen
 
-Probieren Sie hier nun eigene Überlegungen anzustellen zu den beiden Klassifizierungen. (i) Was zeigen sich in den Klassifizerungen je einzeln? (ii) Was können Sie im Vergleich miteinander aussagen? (iii) Und wie könnten Sie diese Klassifizierungen in einer einfachen Analyse nutzen?
+Probieren Sie hier nun eigene Überlegungen anzustellen zu den beiden Klassifizierungen. 
+
+(i) Was zeigen sich in den Klassifizerungen je einzeln? 
+
+Bei Wright gibt es drei verschiedene Klassifizierungen: simple, decision-making und power-class. Simple ist die einfachste Klassifizierung, die nur die Position im Betrieb berücksichtigt. Decision-making berücksichtigt zusätzlich die Anzahl der Angestellten und die Kontrolle über die Arbeit. Power-class berücksichtigt zusätzlich die tägliche Kontrolle über die Arbeit. 
+
+Bei Goldthorpe gibt es nur eine Klassifizierung, die auf der ISCO08 basiert. Die Klassifizierung berücksichtigt die Position im Betrieb, die Anzahl der Angestellten und die Kontrolle über die Arbeit. Dabei wird die ISCO08 in eine ESEC-Klassifizierung umgewandelt. Dann wird die ESEC-Klassifizierung in 9 Klassen unterteilt und die Personen werden entsprechend eingeteilt.
+
+
+(ii) Was können Sie im Vergleich miteinander aussagen? 
+
+Wrights Klassifikation ist einfacher und berücksichtigt weniger Faktoren als Goldthorpe. Wrights Klassifikation berücksichtigt nur die Position im Betrieb, die Anzahl der Angestellten und die Kontrolle über die Arbeit. Goldthorpe berücksichtigt die gleichen Faktoren, aber die Klassifikation ist komplexer und unterteilt die Personen in 9 Klassen.
+
+
+(iii) Und wie könnten Sie diese Klassifizierungen in einer einfachen Analyse nutzen?
+
+Die Klassifizierungen können genutzt werden, um die Personen in verschiedene Klassen einzuteilen und zu analysieren, wie sich die Klassen in verschiedenen Variablen unterscheiden. Jetzt könnten wir beispielsweise herausfinden wie sich das Geschlecht in den verschiedenen Klassen unterscheidet. Unsere Annahme ist vielleicht, dass mehr Männer in den Manager-Positionen sind als Frauen. 
+
+```{r}
+table(ESS11$wright_si, ESS11$sex, useNA = "always")
+table(ESS11$wright_dm, ESS11$sex, useNA = "always")
+table(ESS11$wright_pc, ESS11$sex, useNA = "always")
+table(ESS11$esec, ESS11$sex, useNA = "always")
+
+```
