@@ -219,7 +219,7 @@ print(gold_gnd_distr)
 
 Aus dieser Tabelle geht hervor, dass doppelt soviele Männer in die "Higher Manager" Kategorie fallen wie Frauen. Auch "Higher Professional" und "Lower Manager", aber auch "Lower-grade Blue-collar" sind von Männern dominiert. Frauen sind hingegen vor allem in "Higher-grade White-collar" und "Lower-grade White-collar" vertreten. In "Lower Professional" stellen sie auch die Mehrheit dar. Damit stellen Frauen die Minderheit in der Serviceklasse vor allem in Managerpositionen dar.
 
-Wrights Klassifizierung bietet eine detaillierte Einteilung der Personen bezogen auf Fähigkeit, Autonomie und Anzahl der Angestellten. Wieder auf das Geschlecht bezogen kann hier beispielsweise überprüft werden, ob die Frauen in der Serviceklasse eher mehr oder weniger Entscheidungsmacht haben.
+Wrights Klassifizierung bietet eine detaillierte Einteilung der Personen bezogen auf Fähigkeit, Autonomie und Anzahl der Angestellten. Wieder auf das Geschlecht bezogen kann beispielsweise mit der "decision-making" Klassifizierung überprüft werden, ob die Frauen in der Serviceklasse eher mehr oder weniger Entscheidungsmacht haben.
 
 ```{r}
 # Geschlechtereinteilung für Wrights Klassifizierung
@@ -240,3 +240,5 @@ wright_gnd_distr <- ESS11 %>%
 # Print the summary table
 print(wright_gnd_distr)
 ```  
+
+Aus der Tabelle kann man schliessen, dass Frauen in der Serviceklasse am meisten in der "self empl w/no employees" und "skilled supervisors" zu verorten sind. Im Gegensatz dazu sind die meisten Männer der Serviceklasse in den "expert supervisors" und "skilled supervisors" und self epl w/no employees" Kategorie. Daher haben auch Frauen, die in die Serviceklasse fallen, weniger Entscheidungsmacht als Männer.
