@@ -1,6 +1,12 @@
 ---
 title: "Forschungsseminar Klassen und Innovation: Vorbereitung E04"
-format: html
+author: "Lisa Florentina Scherrer"
+date: "2024-10-05"
+output: 
+  pdf_document:
+    toc: true  
+    toc_depth: 2  
+    number_sections: true  
 editor: source
 editor_options: 
   chunk_output_type: console
@@ -157,37 +163,80 @@ table(ESS11$esec, useNA = "always")
 
 # 4. Eigene Überlegungen und Analysen
 
-Probieren Sie hier nun eigene Überlegungen anzustellen zu den beiden Klassifizierungen. 
+Probieren Sie hier nun eigene Überlegungen anzustellen zu den beiden Klassifizierungen.
 
-(i) Was zeigen sich in den Klassifizerungen je einzeln? 
+(i) Was zeigen sich in den Klassifizerungen je einzeln?
 
-*Wright*
-1. simple
-In Wrights "simple" Klassifizierung bietet einen einfachen Überblick, wobei zwischen Arbeitgebern- und nehmern unterschieden, wobei erstere durch die Anzahl der Angestellten und letztere durch ihre Expertise und der Unterteilung in "managers/supervisors" und "workers" unterschieden werden. Die meisten fallen in die verschiedenen "workers"-Kategorien, nur 2 Personen haben mehr als 9 Angestellte, 16 weniger als 10 und 165 sind selbstständig. Diese Zahlen bleiben in den anderen von Wrights Klassifizierungen gleich. Auch nur wenige fallen in die "supervisor/manager" Kategorien.
+***Wright***
 
-2. decision-making
-In der "decision-making" Klassifizierung wird zusätzlich zwischen "supervisors" und "managers" unterschieden und damit ein Fokus darauf gelegt, wie viel Entscheidungsmacht die Personen haben. Dabei sind für jede "skill"-Kategorie fallen jeweils 10-mal soviele Personen in die "supervisors" Kategorie wie in die "managers" Kategorie.
+1.  simple:
 
-3. power-class
-In der "power-class" Klassifizierung wird zusätzlich die tägliche Kontrolle über die Arbeit berücksichtigt. Dabei werden keine Experten differenziert, dafür aber zwei zusätzliche Kategorien für die "semi autonomous" eingeführt. 
+    In Wrights "simple" Klassifizierung bietet einen einfachen Überblick, wobei zwischen Arbeitgebern- und nehmern unterschieden, wobei erstere durch die Anzahl der Angestellten und letztere durch ihre Expertise und der Unterteilung in "managers/supervisors" und "workers" unterschieden werden. Die meisten fallen in die verschiedenen "workers"-Kategorien, nur 2 Personen haben mehr als 9 Angestellte, 16 weniger als 10 und 165 Personen sind selbstständig. Diese Zahlen bleiben in den anderen von Wrights Klassifizierungen gleich. Auch nur wenige fallen in die "supervisor/manager" Kategorien.
 
-*Goldthorpe*
-In Goldthorpes Klassifizierung ist die Anzahl der Angestellten und die Fähigkeiten nicht von zentraler Bedeutung, dafür aber in welchen Beschäftigungsverhältnissen sich die Personen befinden. 
-In Goldthorpes Klassifizierung sind die meisten Personen in den "Professional" Kategorien, die der Service Klasse angehören. Gefolgt davon sind die "White-collar" und "Blue-collar" Kategorien. Die "Professional" und "Manager" Kategorien (Service Klasse), mit guten Arbeitsbedingungen und Aufstiegschancen, machen ungefähr die Hälfte der Personen aus.
+2.  decision-making:
 
-(ii) Was können Sie im Vergleich miteinander aussagen? 
+    In der "decision-making" Klassifizierung wird zusätzlich zwischen "supervisors" und "managers" unterschieden und damit ein Fokus darauf gelegt, wie viel Entscheidungsmacht die Personen haben. Dabei sind für jede "skill"-Kategorie fallen jeweils 10-mal soviele Personen in die "supervisors" Kategorie wie in die "managers" Kategorie.
 
-Wrights Klassifikation ist einfacher und berücksichtigt weniger Faktoren als Goldthorpe. Wrights Klassifikation berücksichtigt nur die Position im Betrieb, die Anzahl der Angestellten und die Kontrolle über die Arbeit. Goldthorpe berücksichtigt die gleichen Faktoren, aber die Klassifikation ist komplexer und unterteilt die Personen in 9 Klassen.
+3.  power-class
 
+    In der "power-class" Klassifizierung wird zusätzlich die tägliche Kontrolle über die Arbeit berücksichtigt. Dabei werden keine Experten differenziert, dafür aber zwei zusätzliche Kategorien für die "semi autonomous" eingeführt.
+
+***Goldthorpe***
+
+In Goldthorpes Klassifizierung ist die Anzahl der Angestellten und die Fähigkeiten nicht von zentraler Bedeutung, dafür aber in welchen Beschäftigungsverhältnissen sich die Personen befinden. In Goldthorpes Klassifizierung sind die meisten Personen in den "Professional" Kategorien, die der Service Klasse angehören. Gefolgt davon sind die "White-collar" und "Blue-collar" Kategorien. Die "Professional" und "Manager" Kategorien (Service Klasse), mit guten Arbeitsbedingungen und Aufstiegschancen, machen ungefähr die Hälfte der Personen aus.
+
+(ii) Was können Sie im Vergleich miteinander aussagen?
+
+Aus Goldthorpes Klassifizierung zeigt sich, dass die Hälfte der Fälle sich auf die Serviceklasse mit hohem Status und Sicherheit bezieht. Aus Wrights Klassifizierungen, in der diese Gruppen noch genauer unterteilt werden, zeigt sich allerdings, dass diese Personen nicht umbedingt viele Angestellte oder Entscheidungsmacht haben. Diese Aufgaben sind auf wenige in den Kategorien "manager", "self-employed w/ 10+ employees" ,"self-employed w/1-9 employees" verteilt.
+
+Die Arbeiterklasse ist in Goldthorpes Klassifizierung grob in höhere und niedrigere "White-collar" und "blue-collar" unterteilt, wobei die "white-Collar" Kategorien stärker vertreten sind und damit aufzeigen, dass mehr Hochqualifizierte in diesem Datensatz befragt wurden. In Wrights Klassifizierung werden die Personen aus der Arbeiterklasse noch genauer basierend auf Fähigkeit und Autonomie bei der Arbeit eingeteilt. Hier stellt sich heraus, dass die meisten "skilled workers" auch bis zu einem gewissen Grad an Entscheidungsmacht in ihrer Arbeitsgestaltung haben. "Low skilled workers" haben hingegen überwiegend keine Autonomie.
 
 (iii) Und wie könnten Sie diese Klassifizierungen in einer einfachen Analyse nutzen?
 
-Die Klassifizierungen können genutzt werden, um die Personen in verschiedene Klassen einzuteilen und zu analysieren, wie sich die Klassen in verschiedenen Variablen unterscheiden. Jetzt könnten wir beispielsweise herausfinden wie sich das Geschlecht in den verschiedenen Klassen unterscheidet. Unsere Annahme ist vielleicht, dass mehr Männer in den Manager-Positionen sind als Frauen. 
+Goldthorpes Klassifizierung hingegen bietet eine Einteilung der Personen bezogen auf die Arbeitsbedingungen und die Sicherheit der Arbeitsplätze. Diese Klassifizierung könnte beispielsweise darauf hindeuten, welche sozio-demographischen Gruppen in den Jobs mit hohen Aufstiegschancen vertreten sind. Die Annahme ist beispielsweise, dass mehr Männer in den Manager-Positionen sind als Frauen und damit auch mehr Aufstiegschancen haben.
 
 ```{r}
-table(ESS11$wright_si, ESS11$sex, useNA = "always")
-table(ESS11$wright_dm, ESS11$sex, useNA = "always")
-table(ESS11$wright_pc, ESS11$sex, useNA = "always")
-table(ESS11$esec, ESS11$sex, useNA = "always")
+# Geschlechtereinteilung für Goldthorpes Klassifizierung
+gold_gnd_distr <- ESS11 %>%
+  # NAs herausfiltern und Kategorien 1,2,3 behalten ("A Man", "A Woman", "Other")
+  filter(!is.na(esec), nobingnd %in% 1:3) %>%
+  # Gruppen für Geschlecht und Klassen
+  group_by(esec, nobingnd) %>%
+  # Fallzahl
+  summarise(count = n()) %>%
+  # Gruppen auflösen für weitere Überlegungen
+  ungroup() %>%
+  # Label erstellen
+  mutate(gender = recode(nobingnd, `1` = "Man", `2` = "Woman", `3` = "Other")) %>%
+  # Numerische Variable entfernen
+  select(-nobingnd) %>%
+  # Eine Spalte pro Geschlecht 
+  tidyr::spread(key = gender, value = count, fill = 0)
 
+# Tabelle anzeigen
+print(gold_gnd_distr)
 ```
+
+Aus dieser Tabelle geht hervor, dass doppelt soviele Männer in die "Higher Manager" Kategorie fallen wie Frauen. Auch "Higher Professional" und "Lower Manager", aber auch "Lower-grade Blue-collar" sind von Männern dominiert. Frauen sind hingegen vor allem in "Higher-grade White-collar" und "Lower-grade White-collar" vertreten. In "Lower Professional" stellen sie auch die Mehrheit dar. Damit stellen Frauen die Minderheit in der Serviceklasse vor allem in Managerpositionen dar.
+
+Wrights Klassifizierung bietet eine detaillierte Einteilung der Personen bezogen auf Fähigkeit, Autonomie und Anzahl der Angestellten. Wieder auf das Geschlecht bezogen kann hier beispielsweise überprüft werden, ob die Frauen in der Serviceklasse eher mehr oder weniger Entscheidungsmacht haben.
+
+```{r}
+# Geschlechtereinteilung für Wrights Klassifizierung
+wright_gnd_distr <- ESS11 %>%
+  # NAs herausfiltern und Kategorien 1,2 behalten
+  filter(!is.na(wright_dm), nobingnd %in% 1:2) %>%
+  # Gruppen für Klassen und Geschlecht
+  group_by(wright_dm, nobingnd) %>%
+  # Fallzahl
+  summarise(count = n()) %>%
+  # Label erstellen
+  mutate(gender = recode(nobingnd, `1` = "Man", `2` = "Woman")) %>%
+  # Numerische Variable entfernen
+  select(-nobingnd) %>%
+  # Eine Spalte pro Geschlecht
+  tidyr::spread(key = gender, value = count, fill = 0)
+
+# Print the summary table
+print(wright_gnd_distr)
+```  
