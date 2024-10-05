@@ -161,10 +161,19 @@ Probieren Sie hier nun eigene Überlegungen anzustellen zu den beiden Klassifizi
 
 (i) Was zeigen sich in den Klassifizerungen je einzeln? 
 
-Bei Wright gibt es drei verschiedene Klassifizierungen: simple, decision-making und power-class. Simple ist die einfachste Klassifizierung, die nur die Position im Betrieb berücksichtigt. Decision-making berücksichtigt zusätzlich die Anzahl der Angestellten und die Kontrolle über die Arbeit. Power-class berücksichtigt zusätzlich die tägliche Kontrolle über die Arbeit. 
+*Wright*
+1. simple
+In Wrights "simple" Klassifizierung bietet einen einfachen Überblick, wobei zwischen Arbeitgebern- und nehmern unterschieden, wobei erstere durch die Anzahl der Angestellten und letztere durch ihre Expertise und der Unterteilung in "managers/supervisors" und "workers" unterschieden werden. Die meisten fallen in die verschiedenen "workers"-Kategorien, nur 2 Personen haben mehr als 9 Angestellte, 16 weniger als 10 und 165 sind selbstständig. Diese Zahlen bleiben in den anderen von Wrights Klassifizierungen gleich. Auch nur wenige fallen in die "supervisor/manager" Kategorien.
 
-Bei Goldthorpe gibt es nur eine Klassifizierung, die auf der ISCO08 basiert. Die Klassifizierung berücksichtigt die Position im Betrieb, die Anzahl der Angestellten und die Kontrolle über die Arbeit. Dabei wird die ISCO08 in eine ESEC-Klassifizierung umgewandelt. Dann wird die ESEC-Klassifizierung in 9 Klassen unterteilt und die Personen werden entsprechend eingeteilt.
+2. decision-making
+In der "decision-making" Klassifizierung wird zusätzlich zwischen "supervisors" und "managers" unterschieden und damit ein Fokus darauf gelegt, wie viel Entscheidungsmacht die Personen haben. Dabei sind für jede "skill"-Kategorie fallen jeweils 10-mal soviele Personen in die "supervisors" Kategorie wie in die "managers" Kategorie.
 
+3. power-class
+In der "power-class" Klassifizierung wird zusätzlich die tägliche Kontrolle über die Arbeit berücksichtigt. Dabei werden keine Experten differenziert, dafür aber zwei zusätzliche Kategorien für die "semi autonomous" eingeführt. 
+
+*Goldthorpe*
+In Goldthorpes Klassifizierung ist die Anzahl der Angestellten und die Fähigkeiten nicht von zentraler Bedeutung, dafür aber in welchen Beschäftigungsverhältnissen sich die Personen befinden. 
+In Goldthorpes Klassifizierung sind die meisten Personen in den "Professional" Kategorien, die der Service Klasse angehören. Gefolgt davon sind die "White-collar" und "Blue-collar" Kategorien. Die "Professional" und "Manager" Kategorien (Service Klasse), mit guten Arbeitsbedingungen und Aufstiegschancen, machen ungefähr die Hälfte der Personen aus.
 
 (ii) Was können Sie im Vergleich miteinander aussagen? 
 
