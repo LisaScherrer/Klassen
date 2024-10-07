@@ -1,20 +1,19 @@
 ---
 title: "Forschungsseminar Klassen und Innovation: Vorbereitung E04"
-author: "Lisa Florentina Scherrer"
-date: "2024-10-05"
-output: 
-  pdf_document:
+format: 
+  pdf:
     toc: true  
-    toc_depth: 2  
-    number_sections: true  
+    toc-depth: 2  
+    number-sections: true  
 editor: source
-editor_options: 
-  chunk_output_type: console
+editor-options: 
+  chunk-output-type: console
 ---
 
 # 1. Einführung
 
-Das sich in der Entwicklung befindende Paket "DIGCLASS" ermöglicht es, automatische verschiede Klassen-Zuordnungen in Datensätzen zu erstellen. Siehe hier: https://digclass.pages.code.europa.eu/digclass/index.html
+Das sich in der Entwicklung befindende Paket "DIGCLASS" ermöglicht es, automatische verschiede Klassen-Zuordnungen in Datensätzen zu erstellen. Siehe hier: 
+https://digclass.pages.code.europa.eu/digclass/index.html
 
 Um das Paket verwenden zu können, müssen Sie zuerst Git installieren. Eine Anleitung finden Sie hier: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
@@ -63,7 +62,7 @@ Die ISCO08 Klassifizierung muss im Character-Format vorliege und es gilt sicherz
 ```{r}
 ESS11$isco08 <- as.character(ESS11$isco08) #wird vom Paket verlangt
 ESS11$isco08[str_count(ESS11$isco08)!=4 & !is.na(ESS11$isco08)]
-ESS11$isco08[ESS11$isco08=="110"] <- "0110" #nur 110 entspricht nicht dem 4-stelligen Format
+ESS11$isco08[ESS11$isco08=="110"] <- "0110"
 ```
 
 ## 3.2 Klassenzuordnung nach Wright
@@ -171,11 +170,11 @@ Probieren Sie hier nun eigene Überlegungen anzustellen zu den beiden Klassifizi
 
 1.  simple:
 
-    In Wrights "simple" Klassifizierung bietet einen einfachen Überblick, wobei zwischen Arbeitgebern- und nehmern unterschieden, wobei erstere durch die Anzahl der Angestellten und letztere durch ihre Expertise und der Unterteilung in "managers/supervisors" und "workers" unterschieden werden. Die meisten fallen in die verschiedenen "workers"-Kategorien, nur 2 Personen haben mehr als 9 Angestellte, 16 weniger als 10 und 165 Personen sind selbstständig. Diese Zahlen bleiben in den anderen von Wrights Klassifizierungen gleich. Auch nur wenige fallen in die "supervisor/manager" Kategorien.
+    In Wrights "simple" Klassifizierung bietet einen einfachen Überblick, wobei zwischen Arbeitgebern- und nehmern unterschieden, wobei erstere durch die Anzahl der Angestellten und letztere durch ihre Expertise und der Unterteilung in "managers/supervisors" und "workers" unterschieden werden. Die meisten fallen in die verschiedenen "workers" Kategorien, nur 2 Personen haben mehr als 9 Angestellte, 16 weniger als 10 und 165 Personen sind selbstständig. Diese Zahlen bleiben in den anderen von Wrights Klassifizierungen gleich. Auch nur wenige fallen in die "supervisor/manager" Kategorien.
 
 2.  decision-making:
 
-    In der "decision-making" Klassifizierung wird zusätzlich zwischen "supervisors" und "managers" unterschieden und damit ein Fokus darauf gelegt, wie viel Entscheidungsmacht die Personen haben. Dabei sind für jede "skill"-Kategorie fallen jeweils 10-mal soviele Personen in die "supervisors" Kategorie wie in die "managers" Kategorie.
+    In der "decision-making" Klassifizierung wird zusätzlich zwischen "supervisors" und "managers" unterschieden und damit ein Fokus darauf gelegt, wie viel Entscheidungsmacht die Personen haben. Dabei sind für alle Unterkategorien, basierend auf "skill", 10-mal soviele Personen in die "supervisors" Kategorie wie in der "managers" Kategorie.
 
 3.  power-class
 
@@ -183,13 +182,13 @@ Probieren Sie hier nun eigene Überlegungen anzustellen zu den beiden Klassifizi
 
 ***Goldthorpe***
 
-In Goldthorpes Klassifizierung ist die Anzahl der Angestellten und die Fähigkeiten nicht von zentraler Bedeutung, dafür aber in welchen Beschäftigungsverhältnissen sich die Personen befinden. In Goldthorpes Klassifizierung sind die meisten Personen in den "Professional" Kategorien, die der Service Klasse angehören. Gefolgt davon sind die "White-collar" und "Blue-collar" Kategorien. Die "Professional" und "Manager" Kategorien (Service Klasse), mit guten Arbeitsbedingungen und Aufstiegschancen, machen ungefähr die Hälfte der Personen aus.
+In Goldthorpes Klassifizierung ist die Anzahl der Angestellten und die Fähigkeiten nicht von zentraler Bedeutung, dafür aber in welchen Beschäftigungsverhältnissen sich die Personen befinden. In Goldthorpes Klassifizierung sind die meisten Personen in den "professional" Kategorien, die der Service Klasse angehören. Gefolgt davon sind die "white-collar" und "blue-collar" Kategorien. Die "professional" und "manager" Kategorien (Serviceklasse), mit guten Arbeitsbedingungen und Aufstiegschancen, machen ungefähr die Hälfte der Personen aus.
 
 (ii) Was können Sie im Vergleich miteinander aussagen?
 
-Aus Goldthorpes Klassifizierung zeigt sich, dass die Hälfte der Fälle sich auf die Serviceklasse mit hohem Status und Sicherheit bezieht. Aus Wrights Klassifizierungen, in der diese Gruppen noch genauer unterteilt werden, zeigt sich allerdings, dass diese Personen nicht umbedingt viele Angestellte oder Entscheidungsmacht haben. Diese Aufgaben sind auf wenige in den Kategorien "manager", "self-employed w/ 10+ employees" ,"self-employed w/1-9 employees" verteilt.
+Aus Goldthorpes Klassifizierung zeigt sich, dass die Hälfte der Fälle in die Serviceklasse mit hohem Status und Sicherheit einzuordnen. Aus Wrights Klassifizierungen, in der diese Gruppen noch genauer unterteilt werden, zeigt sich allerdings, dass diese Personen nicht umbedingt viele Angestellte oder Entscheidungsmacht haben. Diese Aufgaben sind auf wenige in den Kategorien "manager", "self-employed w/ 10+ employees" ,"self-employed w/1-9 employees" verteilt.
 
-Die Arbeiterklasse ist in Goldthorpes Klassifizierung grob in höhere und niedrigere "White-collar" und "blue-collar" unterteilt, wobei die "white-Collar" Kategorien stärker vertreten sind und damit aufzeigen, dass mehr Hochqualifizierte in diesem Datensatz befragt wurden. In Wrights Klassifizierung werden die Personen aus der Arbeiterklasse noch genauer basierend auf Fähigkeit und Autonomie bei der Arbeit eingeteilt. Hier stellt sich heraus, dass die meisten "skilled workers" auch bis zu einem gewissen Grad an Entscheidungsmacht in ihrer Arbeitsgestaltung haben. "Low skilled workers" haben hingegen überwiegend keine Autonomie.
+Die Arbeiterklasse ist in Goldthorpes Klassifizierung grob in höhere und niedrigere "white-collar" und "blue-collar" unterteilt, wobei die "white-Collar" Kategorien stärker vertreten sind und damit aufzeigen, dass mehr Hochqualifizierte in diesem Datensatz befragt wurden. In Wrights Klassifizierung werden die Personen aus der Arbeiterklasse noch genauer basierend auf Fähigkeit und Autonomie bei der Arbeit eingeteilt. Hier stellt sich heraus, dass die meisten "skilled workers" auch bis zu einem gewissen Grad an Entscheidungsmacht in ihrer Arbeitsgestaltung haben. "Low skilled workers" haben hingegen überwiegend keine Autonomie.
 
 (iii) Und wie könnten Sie diese Klassifizierungen in einer einfachen Analyse nutzen?
 
@@ -239,6 +238,6 @@ wright_gnd_distr <- ESS11 %>%
 
 # Print the summary table
 print(wright_gnd_distr)
-```  
+```
 
-Aus der Tabelle kann man schliessen, dass Frauen in der Serviceklasse am meisten in der "self empl w/no employees" und "skilled supervisors" zu verorten sind. Im Gegensatz dazu sind die meisten Männer der Serviceklasse in den "expert supervisors" und "skilled supervisors" und self epl w/no employees" Kategorie. Daher haben auch Frauen, die in die Serviceklasse fallen, weniger Entscheidungsmacht als Männer.
+Aus der Tabelle kann man schliessen, dass Frauen in der Serviceklasse am meisten in der "self empl w/no employees" und "skilled supervisors" zu verorten sind. Im Gegensatz dazu sind die meisten Männer der Serviceklasse in den "expert supervisors" und "skilled supervisors" und "self epl w/no employees" Kategorie. Daher haben auch Frauen, die in die Serviceklasse fallen, weniger Entscheidungsmacht als Männer.

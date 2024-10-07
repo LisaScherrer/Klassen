@@ -361,31 +361,30 @@ Self-employed and Small Employer agriculture
 <ol start="3" type="i">
 <li>Und wie könnten Sie diese Klassifizierungen in einer einfachen Analyse nutzen?</li>
 </ol>
-<p>Wrights Klassifizierung bietet eine detaillierte Einteilung der Personen bezogen auf Fähigkeit, Autonomie und Anzahl der Angestellten. Diese können gut für eine Neo-Marxistische Klassenanalyse angewendet werden, da es hier mehr um die Machtverhältnisse und die Unterschiede in der Arbeitsgestaltung geht.</p>
 <p>Goldthorpes Klassifizierung hingegen bietet eine Einteilung der Personen bezogen auf die Arbeitsbedingungen und die Sicherheit der Arbeitsplätze. Diese Klassifizierung könnte beispielsweise darauf hindeuten, welche sozio-demographischen Gruppen in den Jobs mit hohen Aufstiegschancen vertreten sind. Die Annahme ist beispielsweise, dass mehr Männer in den Manager-Positionen sind als Frauen und damit auch mehr Aufstiegschancen haben.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Geschlechtereinteilung für Goldthorpes Klassifizierung</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>gnd_distr <span class="ot">&lt;-</span> ESS11 <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>gold_gnd_distr <span class="ot">&lt;-</span> ESS11 <span class="sc">%&gt;%</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># NAs herausfiltern und Kategorien 1,2,3 behalten ("A Man", "A Woman", "Other")</span></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(esec), nobingnd <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Gruppen für Geschlecht und Klassen erstellen</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Gruppen für Geschlecht und Klassen</span></span>
 <span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(esec, nobingnd) <span class="sc">%&gt;%</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Wie viele Personen sind in jeder Gruppe?</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fallzahl</span></span>
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
 <span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Gruppen auflösen für weitere Überlegungen</span></span>
 <span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Namen für die Geschlechter</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Label erstellen</span></span>
 <span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> <span class="fu">recode</span>(nobingnd, <span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"Man"</span>, <span class="st">`</span><span class="at">2</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"Woman"</span>, <span class="st">`</span><span class="at">3</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"Other"</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Numerische Variable entfernen</span></span>
 <span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>nobingnd) <span class="sc">%&gt;%</span></span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Ein Geschlecht für jede Spalte</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Eine Spalte pro Geschlecht </span></span>
 <span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">spread</span>(<span class="at">key =</span> gender, <span class="at">value =</span> count, <span class="at">fill =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'esec'. You can override using the
 `.groups` argument.</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tabelle anzeigen</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(gnd_distr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(gold_gnd_distr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 11 × 4
    esec                                           Man Other Woman
@@ -404,6 +403,48 @@ Self-employed and Small Employer agriculture
 </div>
 </div>
 <p>Aus dieser Tabelle geht hervor, dass doppelt soviele Männer in die “Higher Manager” Kategorie fallen wie Frauen. Auch “Higher Professional” und “Lower Manager”, aber auch “Lower-grade Blue-collar” sind von Männern dominiert. Frauen sind hingegen vor allem in “Higher-grade White-collar” und “Lower-grade White-collar” vertreten. In “Lower Professional” stellen sie auch die Mehrheit dar. Damit stellen Frauen die Minderheit in der Serviceklasse vor allem in Managerpositionen dar.</p>
+<p>Wrights Klassifizierung bietet eine detaillierte Einteilung der Personen bezogen auf Fähigkeit, Autonomie und Anzahl der Angestellten. Wieder auf das Geschlecht bezogen kann beispielsweise mit der “decision-making” Klassifizierung überprüft werden, ob die Frauen in der Serviceklasse eher mehr oder weniger Entscheidungsmacht haben.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Geschlechtereinteilung für Wrights Klassifizierung</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>wright_gnd_distr <span class="ot">&lt;-</span> ESS11 <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># NAs herausfiltern und Kategorien 1,2 behalten</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(wright_dm), nobingnd <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Gruppen für Klassen und Geschlecht</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(wright_dm, nobingnd) <span class="sc">%&gt;%</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Fallzahl</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Label erstellen</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender =</span> <span class="fu">recode</span>(nobingnd, <span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"Man"</span>, <span class="st">`</span><span class="at">2</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"Woman"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Numerische Variable entfernen</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>nobingnd) <span class="sc">%&gt;%</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Eine Spalte pro Geschlecht</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">spread</span>(<span class="at">key =</span> gender, <span class="at">value =</span> count, <span class="at">fill =</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'wright_dm'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the summary table</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(wright_gnd_distr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 12 × 3
+# Groups:   wright_dm [12]
+   wright_dm                   Man Woman
+   &lt;ord&gt;                     &lt;dbl&gt; &lt;dbl&gt;
+ 1 Self empl w/10+ employees     2     0
+ 2 Self empl w/1-9 employees     9     7
+ 3 Self empl w/no empoyees      77    87
+ 4 Expert managers              10     0
+ 5 Expert supervisors           75    27
+ 6 Experts                     114    75
+ 7 Skilled managers              8     1
+ 8 Skilled supervisors          58    44
+ 9 Skilled workers             191   176
+10 Low skilled managers          1     3
+11 Low skilled supervisors      13    37
+12 Low skilled workers         138   215</code></pre>
+</div>
+</div>
+<p>Aus der Tabelle kann man schliessen, dass Frauen in der Serviceklasse am meisten in der “self empl w/no employees” und “skilled supervisors” zu verorten sind. Im Gegensatz dazu sind die meisten Männer der Serviceklasse in den “expert supervisors” und “skilled supervisors” und self epl w/no employees” Kategorie. Daher haben auch Frauen, die in die Serviceklasse fallen, weniger Entscheidungsmacht als Männer.</p>
 </section>
 
 </main>
